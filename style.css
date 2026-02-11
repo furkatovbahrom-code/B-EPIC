@@ -1,24 +1,57 @@
-.top-links {
-  margin-top: 10px;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #111;
+}
+
+.header {
+  text-align: center;
+  padding: 20px;
+}
+
+.products {
+  padding: 15px;
+}
+
+.product {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+}
+
+.price {
+  margin: 10px 0;
+}
+
+.quantity {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 15px;
 }
 
-.top-links a {
-  text-decoration: none;
-  color: #16a34a;
-  font-weight: bold;
+.quantity button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  background: #eaeaea;
 }
 
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
+.buy {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
   background: #16a34a;
   color: white;
-  padding: 15px;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.total {
+  margin-top: 10px;
+  font-weight: bold;
 }
