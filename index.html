@@ -213,7 +213,7 @@ document.querySelectorAll(".product").forEach(product => {
 
     const phoneNumber = "77752709238"; // ОСЫ ЖЕРГЕ ӨЗ НӨМІРІҢДІ ЖАЗ
 
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
   };
