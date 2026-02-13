@@ -29,15 +29,56 @@
       padding: 15px;
     }
 
-    .product {
-  background: url("photo_2026-02-06_19-38-53.jpg") no-repeat center center;
-  background-size: cover;
+  .product {
+  position: relative;
   padding: 20px;
   margin-bottom: 20px;
-  border-radius: 12px;
+  border-radius: 16px;
+  overflow: hidden;
   color: white;
 }
 
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.product * {
+  position: relative;
+  z-index: 2;
+}
+
+    .product {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  color: white;
+}
+
+.fuel {
+  background: url("photo_2026-02-06_19-38-53.jpg") center/cover no-repeat;
+}
+
+.elev8 {
+  background: url("elev8.jpg") center/cover no-repeat;
+}
+
+.bcardio {
+  background: url("bcardio.jpg") center/cover no-repeat;
+}
+
+.sleep {
+  background: url("sleep.jpg") center/cover no-repeat;
+}
+
+.restore {
+  background: url("restore.jpg") center/cover no-repeat;
+}
 
     .quantity {
       display: flex;
