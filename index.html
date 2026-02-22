@@ -6,29 +6,29 @@
   <title>B-EPIC Shop</title>
 
   <style>
-    body {
+  body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f0f0f;
-  color: #f5f5f5;
-    }
+  background: #F7E7CE;  /* Krem fon */
+  color: #102C26;        /* Chuqur yashil text */
+}  
 
-    .header {
+ .header {
   position: relative;
   text-align: center;
   padding: 25px;
-  background: linear-gradient(180deg, #111, #1a1a1a);
-  border-bottom: 1px solid #d4af37;
-}
+  background: linear-gradient(180deg, #102C26, #102C26);
+  border-bottom: 1px solid #102C26;
+}   
 
 .header h1 {
-  color: #d4af37;
+  color: #F7E7CE;
   font-size: 32px;
   letter-spacing: 2px;
 }
 
 .header p {
-  color: #ccc;
+  color: #102C26;
 }
 
     .top-buttons {
@@ -48,8 +48,8 @@
   margin-bottom: 25px;
   border-radius: 18px;
   overflow: hidden;
-  background: #1a1a1a;
-  border: 1px solid #d4af37;
+  background: #102C26;
+  border: 1px solid #F7E7CE;
   box-shadow: 0 10px 30px rgba(0,0,0,0.6);
   transition: 0.3s;
 }
@@ -103,9 +103,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid #d4af37;
-  background: black;
-  color: #d4af37;
+  border: 1px solid #F7E7CE;
+  background: #102C26;
+  color: #F7E7CE;
   font-size: 20px;
   cursor: pointer;
     }
@@ -115,38 +115,38 @@
       margin-top: 5px;
     }
 
-    .top-buttons a,
+.top-buttons a,
 .buy {
   display: block;
   text-align: center;
-  background: #1a1a1a;
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  background: #102C26;
+  border: 1px solid #F7E7CE;
+  color: #F7E7CE;
   padding: 12px;
   border-radius: 14px;
   font-weight: bold;
   text-decoration: none;
   transition: 0.3s;
-}
+}    
 
 .top-buttons a:hover,
 .buy:hover {
-  background: #d4af37;
-  color: black;
+  background: #F7E7CE;
+  color: #102C26;
 }
 
 .top-buttons a:active,
 .buy:active {
   transform: translateY(4px);
   box-shadow: 
-    0 2px 0 #166534,
-    0 4px 8px rgba(0,0,0,0.2);
+    0 2px 0 #102C26,
+    0 4px 8px rgba(16,44,38,0.3);
 }
 
 #loader {
   position: fixed;
   inset: 0;
-  background: white;
+  background: #F7E7CE;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,20 +219,20 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: linear-gradient(145deg, #d4af37, #b8860b);
-  color: black;
+  background: linear-gradient(145deg, #F7E7CE, #F7E7CE);
+  color: #102C26;
   padding: 8px 18px;
   border-radius: 25px;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+  box-shadow: 0 4px 15px rgba(16,44,38,0.4);
 }
 
 /* MODAL */
 #bonusModal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(16,44,38,0.65);
   display: none;
   justify-content: center;
   align-items: center;
@@ -240,7 +240,7 @@
 }
 
 .bonus-content {
-  background: #1a1a1a;
+  background: #F7E7CE;
   padding: 20px;
   border-radius: 18px;
   width: 95%;
@@ -248,16 +248,17 @@
   max-height: 80vh;
   display: flex;
   flex-direction: column;
-  border: 1px solid #d4af37;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-  color: #f5f5f5;
+  border: 1px solid #102C26;
+  box-shadow: 0 10px 40px rgba(16,44,38,0.7);
+  color: #102C26;
 }
 
 .closeBonus {
   align-self: flex-end;
   cursor: pointer;
   font-size: 20px;
-  color: #d4af37;
+  color: #102C26;
+  font-weight: bold;
 }
 
 /* Scroll pastga tushishi uchun */
@@ -270,6 +271,8 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
 }
 
 th, td {
@@ -280,40 +283,60 @@ th, td {
 }
 
 td {
-  color: #ccc;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  color: #102C26;
 }
 
 th {
-  background: #111;
-  color: #d4af37;
-  border: 1px solid #d4af37;
+  background: #102C26;
+  color: #F7E7CE;
+  padding: 10px;
+  border: none;
 }
     
     tbody tr:nth-child(1) td {
-  color: #d4af37;
+  background: linear-gradient(90deg,#102C26,#1b4d42);
+  color: #F7E7CE;
   font-weight: bold;
 }
 
 tbody tr:nth-child(2) td {
-  color: #c0c0c0;
+  background: #e8f0ee;
+  font-weight: bold;
 }
 
 tbody tr:nth-child(3) td {
-  color: #cd7f32;
+  background: #f3f7f6;
+  font-weight: bold;
 }
 
-    .openBrowser {
-  background: #1a1a1a;
-  border: 1px solid #d4af37;
-  color: #ccc;
+.openBrowser {
+  background: #F7E7CE;
+  border: 1px solid #102C26;
+  color: #102C26;
   padding: 12px;
   border-radius: 12px;
   margin-top: 15px;
   font-size: 14px;
-}
+}    
 
 .openBrowser strong {
-  color: #d4af37;
+  color: #102C26;
+  font-weight: bold;
+}
+    
+tbody tr:hover {
+  background: #f3f3f3;
+}  
+.quantity button:hover {
+  background: #F7E7CE;
+  color: #102C26;
+}
+
+.quantity button:active {
+  transform: scale(0.9);
 }
     
   </style>
