@@ -44,14 +44,18 @@
 
   .product {
   position: relative;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 20px;
+  border-radius: 22px;
   overflow: hidden;
-  background: #F7E7CE;
-  border: 1px solid #F7E7CE;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  transition: 0.3s;
+
+  height: 320px; /* 🔥 Balandligini kichraytiradi */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
 }
 
 .product:hover {
@@ -59,12 +63,27 @@
   box-shadow: 0 15px 40px rgba(212,175,55,0.3);
 }
 
-.product::after {
+.product::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.2);
-  z-index: 1;
+
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  border-radius: 22px;
+}
+
+.product h2 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.product p {
+  font-size: 14px;
+  opacity: 0.9;
 }
 
 .product * {
