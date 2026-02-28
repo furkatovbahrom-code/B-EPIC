@@ -9,8 +9,8 @@
   body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #F7E7CE;  /* Krem fon */
-  color: #102C26;        /* Chuqur yashil text */
+  background: #102C26;  /* Krem fon */
+  color: #F7E7CE;        /* Chuqur yashil text */
 }  
 
  .header {
@@ -22,13 +22,13 @@
 }   
 
 .header h1 {
-  color: #F7E7CE;
+  color: #000;
   font-size: 32px;
   letter-spacing: 2px;
 }
 
 .header p {
-  color: #F7E7CE;
+  color: #000;
 }
 
     .top-buttons {
@@ -99,48 +99,76 @@
       margin: 10px 0;
     }
 
-    .quantity button {
-  width: 40px;
-  height: 40px;
+    .quantity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 15px 0;
+}
+
+.quantity button {
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  border: 1px solid #F7E7CE;
-  background: #102C26;
-  color: #F7E7CE;
+
   font-size: 20px;
+  font-weight: 600;
+  color: #111;
+
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.7);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
   cursor: pointer;
-    }
+  transition: all 0.25s ease;
+}
+
+.quantity button:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 35px rgba(0,0,0,0.12),
+    inset 0 2px 6px rgba(255,255,255,1);
+}
+
+.quantity button:active {
+  transform: scale(0.9);
+}
 
     .total {
       font-weight: bold;
       margin-top: 5px;
     }
 
-.top-buttons a,
+ .top-buttons a,
 .buy {
   display: block;
   text-align: center;
-  background: #102C26;
-  border: 1px solid #F7E7CE;
-  color: #F7E7CE;
-  padding: 12px;
-  border-radius: 14px;
-  font-weight: bold;
+
+  padding: 14px 18px;
+  border-radius: 28px;
+
+  font-weight: 500;
   text-decoration: none;
-  transition: 0.3s;
-}    
+  color: #111;
 
-.top-buttons a:hover,
-.buy:hover {
-  background: #F7E7CE;
-  color: #102C26;
-}
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.6);
 
-.top-buttons a:active,
-.buy:active {
-  transform: translateY(4px);
-  box-shadow: 
-    0 2px 0 #102C26,
-    0 4px 8px rgba(16,44,38,0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 #loader {
@@ -214,51 +242,90 @@
   position: relative;
 }
 
-/* KNOPKA qimirlamaydi */
 #bonusBtn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: linear-gradient(145deg, #F7E7CE, #F7E7CE);
-  color: #102C26;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-weight: bold;
+  top: 15px;
+  right: 15px;
+
+  padding: 10px 22px;
+  border-radius: 30px;
+
+  font-weight: 600;
+  color: #111;
+
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.7);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(16,44,38,0.4);
+  transition: 0.3s ease;
 }
 
-/* MODAL */
+#bonusBtn:hover {
+  transform: translateY(-4px);
+}
+
+#bonusBtn:active {
+  transform: scale(0.95);
+}
+
 #bonusModal {
   position: fixed;
   inset: 0;
-  background: rgba(16,44,38,0.65);
+
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(35px);
+
   display: none;
   justify-content: center;
   align-items: center;
+
   z-index: 10000;
 }
 
 .bonus-content {
-  background: #F7E7CE;
-  padding: 20px;
-  border-radius: 18px;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+
+  background: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.7);
+
+  padding: 30px;
+  border-radius: 28px;
+
   width: 95%;
-  max-width: 500px;
+  max-width: 520px;
   max-height: 80vh;
+
   display: flex;
   flex-direction: column;
-  border: 1px solid #102C26;
-  box-shadow: 0 10px 40px rgba(16,44,38,0.7);
-  color: #102C26;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.12),
+    inset 0 2px 8px rgba(255,255,255,1);
+
+  color: #111;
 }
 
 .closeBonus {
   align-self: flex-end;
   cursor: pointer;
-  font-size: 20px;
-  color: #102C26;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.closeBonus:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 /* Scroll pastga tushishi uchun */
@@ -297,7 +364,7 @@ th {
 }
     
     tbody tr:nth-child(1) td {
-  background: linear-gradient(90deg,#102C26,#1b4d42);
+  background: linear-gradient(90deg,#102C26,#102C26);
   color: #F7E7CE;
   font-weight: bold;
 }
@@ -313,18 +380,28 @@ tbody tr:nth-child(3) td {
 }
 
 .openBrowser {
-  background: #F7E7CE;
-  border: 1px solid #102C26;
-  color: #102C26;
-  padding: 12px;
-  border-radius: 12px;
-  margin-top: 15px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.6);
+
+  color: #111;
+  padding: 16px 18px;
+  border-radius: 20px;
+  margin: 20px;
   font-size: 14px;
-}    
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
+  transition: 0.3s ease;
+}
 
 .openBrowser strong {
-  color: #102C26;
-  font-weight: bold;
+  color: #000;
+  font-weight: 600;
 }
     
 tbody tr:hover {
@@ -342,6 +419,49 @@ tbody tr:hover {
 .product p,
 .product div {
   color: #F7E7CE !important;
+}
+
+/* 1-TikTok */
+.top-buttons a:nth-child(1) {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #111;
+}
+
+/* 2-WhatsApp */
+.top-buttons a:nth-child(2) {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #111;
+}
+
+/* 3-TikTok ikkinchi */
+.top-buttons a:nth-child(3) {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #111;
+}
+
+/* 4-Telefon */
+.top-buttons a:nth-child(4) {
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #111;
+}
+
+.top-buttons a:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.1),
+    inset 0 2px 6px rgba(255,255,255,0.9);
 }
 
 .apple-intro {
@@ -446,15 +566,126 @@ tbody tr:hover {
   width: 150px;
   animation: zoomCenter 1.4s ease forwards;
 }
+
+#giftBtn {
+  position: absolute;
+  top: 15px;
+  right: 130px; /* Bonusdan chaproqda turadi */
+
+  padding: 10px 22px;
+  border-radius: 30px;
+
+  font-weight: 600;
+  color: #111;
+
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.7);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#giftBtn:hover {
+  transform: translateY(-4px);
+}
+
+#giftBtn:active {
+  transform: scale(0.95);
+}
+
+#giftModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.3);
+  backdrop-filter: blur(35px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.gift-content {
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(255,255,255,0.7);
+
+  width: 95%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  padding: 30px;
+  border-radius: 30px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.12),
+    inset 0 2px 8px rgba(255,255,255,1);
+
+  color: #111;
+}
+
+.gift-subtitle {
+  opacity: 0.7;
+  margin-bottom: 25px;
+}
+
+.gift-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.gift-card {
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  padding: 15px;
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    inset 0 2px 6px rgba(255,255,255,0.9);
+
+  transition: 0.3s ease;
+}
+
+.gift-card:hover {
+  transform: translateY(-5px);
+}
+
+.gift-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.gift-points {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.closeGift {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
     
   </style>
 </head>
 <body>
-
+  
 <div class="apple-intro">
   <img src="photo_2026-02-23_15-41-55.jpg" class="item top1">
 
-  <img src="photo_2026-02-23_15-43-23.jpg" class="item left1">
+<img src="photo_2026-02-23_15-43-23.jpg" class="item left1">
   <img src="photo_2026-02-23_17-41-33.jpg" class="item left2">
 
   <img src="photo_2026-02-23_15-48-19.jpg" class="item right1">
@@ -469,14 +700,16 @@ tbody tr:hover {
 <div id="introScreen">
 </div>
 
-<audio id="introAudio" src="VID-20260224-WA0011(1).m4a"></audio>
+<audio id="introAudio" src="Импортировано.m4a"></audio>
 
 <header class="header">
   <h1>B-EPIC Shop</h1>
   <p>Қазақстан бойынша сапалы өнімдер</p>
 
   <!-- BONUS BUTTON -->
-<div id="bonusBtn">⭐ Бонус</div>
+<div id="bonusBtn">Бонус</div>
+
+<div id="giftBtn">🎁 Сыйлық</div>
 
   <!-- BONUS MODAL -->
 <div id="bonusModal">
@@ -595,6 +828,55 @@ TikTok B-EPIC
   </div>
   
 </section>
+
+<div id="giftModal">
+  <div class="gift-content">
+
+    <span class="closeGift">✖️</span>
+
+    <h2>🎁 Арнайы сыйлықтар</h2>
+
+    <p class="gift-subtitle">
+      Біз сіздерді ойлап, арнайы бонустық сыйлықтар дайындадық.
+      Жинаған бонустарыңызды тиімді пайдаланыңыз 💎
+    </p>
+
+    <div class="gift-grid">
+
+      <div class="gift-card">
+        <img src="">
+        <div class="gift-points">150 Бонус</div>
+      </div>
+
+      <div class="gift-card">
+        <img src="gift2.jpg">
+        <div class="gift-points">200 Бонус</div>
+      </div>
+
+      <div class="gift-card">
+        <img src="gift3.jpg">
+        <div class="gift-points">250 Бонус</div>
+      </div>
+
+      <div class="gift-card">
+        <img src="gift4.jpg">
+        <div class="gift-points">300 Бонус</div>
+      </div>
+
+      <div class="gift-card">
+        <img src="gift5.jpg">
+        <div class="gift-points">350 Бонус</div>
+      </div>
+
+      <div class="gift-card">
+        <img src="photo_2026-02-28_15-14-40.jpg">
+        <div class="gift-points">400 Бонус</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
   
   © 2026 — <b>Bahrom Furkatov</b>, 
          Негізін қалаушы
@@ -761,17 +1043,25 @@ window.onclick = (e) => {
 
 setTimeout(() => {
   document.querySelector(".apple-intro").style.display = "none";
-}, 5000);  
+}, 7000);  
 
-const clickSound = document.getElementById("clickSound");
-clickSound.volume = 0.2;
+const giftBtn = document.getElementById("giftBtn");
+const giftModal = document.getElementById("giftModal");
+const closeGift = document.querySelector(".closeGift");
 
-document.querySelectorAll("button, a, #bonusBtn").forEach(element => {
-  element.addEventListener("click", () => {
-    clickSound.currentTime = 0;
-    clickSound.play().catch(() => {});
-  });
-});  
+giftBtn.onclick = () => {
+  giftModal.style.display = "flex";
+};
+
+closeGift.onclick = () => {
+  giftModal.style.display = "none";
+};
+
+window.addEventListener("click", (e) => {
+  if (e.target === giftModal) {
+    giftModal.style.display = "none";
+  }
+});
 
 </script>
 
