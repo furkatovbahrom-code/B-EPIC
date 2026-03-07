@@ -100,6 +100,14 @@
   z-index: 2;
 }
 
+.product::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+}
+
 .fuel {
   background: url("photo_2026-02-06_19-38-53.jpg") center/cover no-repeat;
 }
@@ -498,7 +506,12 @@ tbody tr:hover {
 .product h2,
 .product p,
 .product div {
-  color: #e8f0ee !important;
+  color: #ffffff !important;
+
+  text-shadow:
+  0 2px 6px rgba(0,0,0,0.8),
+  0 4px 12px rgba(0,0,0,0.6),
+  0 0 8px rgba(0,0,0,0.5);
 }
 
 /* 1-TikTok */
