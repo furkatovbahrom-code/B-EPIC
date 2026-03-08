@@ -771,74 +771,68 @@ tbody tr:hover {
   font-size: 20px;
 }
 
-.results-section{
-padding:40px 20px;
-text-align:center;
-}
-
-.video-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-}
-
-.card{
-position:relative;
-}
-
-.card video,
-.card img{
-width:100%;
-border-radius:14px;
-cursor:pointer;
-}
-
-.overlay{
-position:absolute;
-bottom:10px;
-left:10px;
-color:white;
-font-size:18px;
-background:rgba(0,0,0,0.4);
-padding:5px 10px;
-border-radius:10px;
-}
-
-.comment-box input{
-width:100%;
-padding:6px;
-border-radius:8px;
-border:none;
-margin-top:5px;
-}
-
-#modal{
-display:none;
+#resultsPanel{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-z-index:999;
-}
-
-#modalContent video,
-#modalContent img{
-max-width:90%;
-max-height:90%;
-border-radius:10px;
-}
-
-#closeModal{
-position:absolute;
-top:20px;
-right:30px;
-font-size:30px;
+background:#111;
 color:white;
+display:none;
+z-index:9999;
+overflow:auto;
+padding:20px;
+}
+
+.results-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
+margin-bottom:20px;
+}
+
+.results-header span{
 cursor:pointer;
+font-size:28px;
+}
+
+.results-tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.results-tabs button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+background:#333;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.results-content{
+display:none;
+}
+
+.media-card{
+margin-bottom:20px;
+}
+
+.media-card video,
+.media-card img{
+width:100%;
+border-radius:12px;
+}
+
+.media-card p{
+margin-top:8px;
+font-size:14px;
+opacity:0.8;
 }
     
   </style>
@@ -931,7 +925,7 @@ TikTok B-ECO
   B-EPIC Builder платформасы
 </a>
 
-<a href="#natijeler">
+<a href="javascript:void(0)" onclick="openResults()">
 <img src="https://cdn-icons-png.flaticon.com/512/4406/4406234.png"
 style="width:26px; vertical-align:middle; margin-right:8px;">
 Нақты нәтижелер
@@ -1185,6 +1179,48 @@ style="width:26px; vertical-align:middle; margin-right:8px;">
 </div>
   
 </section>
+
+<div id="resultsPanel">
+
+<div class="results-header">
+<span onclick="closeResults()">✖</span>
+<h2>Нақты нәтижелер</h2>
+</div>
+
+<div class="results-tabs">
+<button onclick="showVideos()">🎥 Видео</button>
+<button onclick="showPhotos()">🖼 Фото</button>
+</div>
+
+<div id="videos" class="results-content">
+
+<div class="media-card">
+<video controls src="video1.mp4"></video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls src="video2.mp4"></video>
+<p>Клиенттің нақты нәтижесі.</p>
+</div>
+
+</div>
+
+<div id="photos" class="results-content">
+
+<div class="media-card">
+<img src="photo1.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo2.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+</div>
+
+</div>
 
 <div id="giftModal">
   <div class="gift-content">
@@ -1478,35 +1514,23 @@ window.addEventListener("click", (e) => {
   }
 });
 
-function like(el){
-let count = parseInt(el.innerText.replace("❤️",""))
-count++
-el.innerText="❤️ "+count
+function openResults(){
+document.getElementById("resultsPanel").style.display="block"
+showVideos()
 }
 
-function openModal(el){
-let modal=document.getElementById("modal")
-let content=document.getElementById("modalContent")
-
-content.innerHTML=""
-
-if(el.tagName=="VIDEO"){
-let v=document.createElement("video")
-v.src=el.src
-v.controls=true
-v.autoplay=true
-content.appendChild(v)
-}else{
-let img=document.createElement("img")
-img.src=el.src
-content.appendChild(img)
+function closeResults(){
+document.getElementById("resultsPanel").style.display="none"
 }
 
-modal.style.display="flex"
+function showVideos(){
+document.getElementById("videos").style.display="block"
+document.getElementById("photos").style.display="none"
 }
 
-function closeModal(){
-document.getElementById("modal").style.display="none"
+function showPhotos(){
+document.getElementById("videos").style.display="none"
+document.getElementById("photos").style.display="block"
 }
 
 </script>
