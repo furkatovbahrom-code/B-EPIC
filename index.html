@@ -770,10 +770,85 @@ tbody tr:hover {
   cursor: pointer;
   font-size: 20px;
 }
+
+.results-section{
+padding:40px 20px;
+text-align:center;
+}
+
+.video-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+.card{
+position:relative;
+}
+
+.card video,
+.card img{
+width:100%;
+border-radius:14px;
+cursor:pointer;
+}
+
+.overlay{
+position:absolute;
+bottom:10px;
+left:10px;
+color:white;
+font-size:18px;
+background:rgba(0,0,0,0.4);
+padding:5px 10px;
+border-radius:10px;
+}
+
+.comment-box input{
+width:100%;
+padding:6px;
+border-radius:8px;
+border:none;
+margin-top:5px;
+}
+
+#modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+#modalContent video,
+#modalContent img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+#closeModal{
+position:absolute;
+top:20px;
+right:30px;
+font-size:30px;
+color:white;
+cursor:pointer;
+}
     
   </style>
 </head>
 <body>
+
+<div id="modal">
+<span id="closeModal" onclick="closeModal()">✖</span>
+<div id="modalContent"></div>
+</div>
   
 <div class="apple-intro">
   <img src="photo_2026-02-23_15-41-55.jpg" class="item top1">
@@ -1111,6 +1186,56 @@ style="width:26px; vertical-align:middle; margin-right:8px;">
   
 </section>
 
+<section id="natijeler" class="results-section">
+
+<h2>Нақты нәтижелер</h2>
+
+<div class="video-grid">
+
+<div class="card">
+<video onclick="openModal(this)" src="video1.mp4"></video>
+<div class="overlay"><span onclick="like(this)">❤️ 0</span></div>
+<div class="comment-box">
+<input type="text" placeholder="Пікір жазыңыз...">
+</div>
+</div>
+
+<div class="card">
+<video onclick="openModal(this)" src="video2.mp4"></video>
+<div class="overlay"><span onclick="like(this)">❤️ 0</span></div>
+<div class="comment-box">
+<input type="text" placeholder="Пікір жазыңыз...">
+</div>
+</div>
+
+<div class="card">
+<video onclick="openModal(this)" src="video3.mp4"></video>
+<div class="overlay"><span onclick="like(this)">❤️ 0</span></div>
+<div class="comment-box">
+<input type="text" placeholder="Пікір жазыңыз...">
+</div>
+</div>
+
+<div class="card">
+<img onclick="openModal(this)" src="photo1.jpg">
+<div class="overlay"><span onclick="like(this)">❤️ 0</span></div>
+<div class="comment-box">
+<input type="text" placeholder="Пікір жазыңыз...">
+</div>
+</div>
+
+<div class="card">
+<img onclick="openModal(this)" src="photo2.jpg">
+<div class="overlay"><span onclick="like(this)">❤️ 0</span></div>
+<div class="comment-box">
+<input type="text" placeholder="Пікір жазыңыз...">
+</div>
+</div>
+
+</div>
+
+</section>
+
 <div id="giftModal">
   <div class="gift-content">
 
@@ -1344,6 +1469,37 @@ window.addEventListener("click", (e) => {
     giftModal.style.display = "none";
   }
 });
+
+function like(el){
+let count = parseInt(el.innerText.replace("❤️",""))
+count++
+el.innerText="❤️ "+count
+}
+
+function openModal(el){
+let modal=document.getElementById("modal")
+let content=document.getElementById("modalContent")
+
+content.innerHTML=""
+
+if(el.tagName=="VIDEO"){
+let v=document.createElement("video")
+v.src=el.src
+v.controls=true
+v.autoplay=true
+content.appendChild(v)
+}else{
+let img=document.createElement("img")
+img.src=el.src
+content.appendChild(img)
+}
+
+modal.style.display="flex"
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none"
+}
 
 </script>
 
