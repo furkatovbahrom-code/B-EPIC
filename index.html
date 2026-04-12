@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>B-EPIC Shop</title>
+<meta charset="UTF-8">
+
+<title>B-EPIC SHOP | Қазақстан бойынша B-EPIC өнімдері</title>
+
+<meta name="description" content="B-EPIC Shop – Қазақстан бойынша сапалы B-EPIC өнімдері. Тікелей WhatsApp арқылы тапсырыс беріңіз.">
+
+<meta name="keywords" content="B-EPIC, B-EPIC Shop, Bepic Kazakhstan, Elev8, Activ Greens">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
   body {
@@ -98,6 +104,14 @@
 .product * {
   position: relative;
   z-index: 2;
+}
+
+.product::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
 }
 
 .fuel {
@@ -498,7 +512,12 @@ tbody tr:hover {
 .product h2,
 .product p,
 .product div {
-  color: #e8f0ee !important;
+  color: #ffffff !important;
+
+  text-shadow:
+  0 2px 6px rgba(0,0,0,0.8),
+  0 4px 12px rgba(0,0,0,0.6),
+  0 0 8px rgba(0,0,0,0.5);
 }
 
 /* 1-TikTok */
@@ -757,6 +776,82 @@ tbody tr:hover {
   cursor: pointer;
   font-size: 20px;
 }
+
+#resultsPanel{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#0f172a;
+color:white;
+display:none;
+z-index:9999;
+overflow:auto;
+padding:20px;
+box-sizing:border-box;
+}
+
+.results-content{
+max-width:500px;
+margin:auto;
+}
+
+.results-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:20px;
+margin-bottom:20px;
+}
+
+.results-header span{
+cursor:pointer;
+font-size:28px;
+}
+
+.results-tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.results-tabs button{
+flex:1;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#2a2a2a;
+color:white;
+font-size:16px;
+}
+
+.results-content{
+display:none;
+}
+
+.media-card{
+margin-bottom:20px;
+}
+
+.media-card video{
+width:100%;
+border-radius:12px;
+margin-top:10px;
+}
+
+.media-card img{
+width:100%;
+max-height:300px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.media-card p{
+margin-top:8px;
+font-size:14px;
+opacity:0.8;
+}
     
   </style>
 </head>
@@ -840,7 +935,13 @@ TikTok B-ECO
 <a href="https://www.bepicbuilder.com/muhabbattal" target="_blank">
   <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
        style="width:26px; vertical-align:middle; margin-right:8px;">
-  B-EPIC Builder платформасы
+  B-EPIC сайтына тіркелу
+</a>
+
+<a href="javascript:void(0)" onclick="openResults()">
+<img src="https://cdn-icons-png.flaticon.com/512/727/727245.png"
+style="width:26px; vertical-align:middle; margin-right:8px;">
+Нақты нәтижелер
 </a>
 
 <a href="https://wa.me/77752709238" target="_blank">
@@ -849,7 +950,7 @@ TikTok B-ECO
     WhatsApp
   </a>
     
-<a href="tel:+77752709238">📞 Қоңырау шалу</a>  
+<a href="tel:+77752709238">📞 +77752709238</a>  
     
   </div>
 </header>
@@ -859,7 +960,7 @@ TikTok B-ECO
   <div class="product fuel" data-name="Fuel Tabs" data-price="11000">
     <h2>Fuel Tabs</h2>
     <p>Жанармай тиімділігін арттырады</p>
-    <div>1 дана: 11000 ₸</div>
+    <div>1 дана: 11000 ₸  11:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -872,7 +973,7 @@ TikTok B-ECO
   <div class="product elev8" data-name="Elev8" data-price="30000">
     <h2>Elev8</h2>
     <p>Энергия мен сергектік береді</p>
-    <div>1 дана: 30000 ₸  30:Берілетін бонус✅️</div>
+    <div>1 дана: 30000 ₸  30:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -885,7 +986,7 @@ TikTok B-ECO
   <div class="product bcardio" data-name="BCARDIO" data-price="38000">
     <h2>BCARDIO</h2>
     <p>Жүрек-қан тамырларын қолдайды</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -898,7 +999,7 @@ TikTok B-ECO
   <div class="product sleep" data-name="Acceler8 Sleep" data-price="22500">
     <h2>Acceler8 Sleep</h2>
     <p>Ұйқы сапасын жақсартады</p>
-    <div>1 дана: 22500 ₸</div>
+    <div>1 дана: 22500 ₸  23:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -911,7 +1012,7 @@ TikTok B-ECO
   <div class="product restore" data-name="Acceler8 Restore" data-price="22500">
     <h2>Acceler8 Restore</h2>
     <p>Қалпына келуді тездетеді</p>
-    <div>1 дана: 22500 ₸</div>
+    <div>1 дана: 22500 ₸  23:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -924,7 +1025,7 @@ TikTok B-ECO
   <div class="product activ-greens" data-name="Activ Greens Single" data-price="38000">
     <h2>Activ Greens Single</h2>
     <p>Ағзаны тазалап, энергия береді</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -937,7 +1038,7 @@ TikTok B-ECO
   <div class="product tri-glp" data-name="Tri GLP SINGLE" data-price="38000">
     <h2>Tri GLP SINGLE</h2>
     <p>Зат алмасуды жақсартып, салмақты бақылауға көмектеседі</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -950,7 +1051,7 @@ TikTok B-ECO
   <div class="product epicslim" data-name="EpicSlim Collagen" data-price="35000">
     <h2>EpicSlim Collagen</h2>
     <p>Арықтауға көмектесіп, тері мен шашты жақсартады</p>
-    <div>1 дана: 35000 ₸</div>
+    <div>1 дана: 35000 ₸  35:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -963,7 +1064,7 @@ TikTok B-ECO
   <div class="product epicslim-coffee" data-name="EpicSlim Coffee" data-price="35000">
     <h2>EpicSlim Coffee</h2>
     <p>Май жағуға көмектесіп, энергия береді</p>
-    <div>1 дана: 35000 ₸</div>
+    <div>1 дана: 35000 ₸  35:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -976,7 +1077,7 @@ TikTok B-ECO
   <div class="product drink2shrink" data-name="Drink 2 Shrink" data-price="38000">
     <h2>Drink 2 Shrink</h2>
     <p>Арықтауға және энергия беруге көмектеседі</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -989,7 +1090,7 @@ TikTok B-ECO
  <div class="product regener8" data-name="REGENER8" data-price="40000">
     <h2>REGENER8</h2>
     <p>Ағзаны қалпына келтіріп, энергия береді</p>
-    <div>1 дана: 40000 ₸</div>
+    <div>1 дана: 40000 ₸  40:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1002,7 +1103,7 @@ TikTok B-ECO
   <div class="product o2drops" data-name="O2 Drops" data-price="28000">
     <h2>O2 Drops</h2>
     <p>Ағзаны оттегімен байытып, сергектік береді</p>
-    <div>1 дана: 28000 ₸</div>
+    <div>1 дана: 28000 ₸  28:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1015,7 +1116,7 @@ TikTok B-ECO
   <div class="product collagen" data-name="Collagen Single" data-price="38000">
     <h2>Collagen Single</h2>
     <p>Тері, шаш және буын денсаулығын қолдайды</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1028,7 +1129,7 @@ TikTok B-ECO
   <div class="product wrinkle" data-name="2 Minute Wrinkle Reducer" data-price="38000">
     <h2>2 Minute</h2>
     <p>Әжімдерді азайтып, теріні тегістейді</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1041,7 +1142,7 @@ TikTok B-ECO
  <div class="product testosterone" data-name="TESTOSTERONE" data-price="45000">
     <h2>TESTOSTERONE</h2>
     <p>Күш-қуатты арттырып, төзімділікті қолдайды</p>
-    <div>1 дана: 45000 ₸</div>
+    <div>1 дана: 45000 ₸  45:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1054,7 +1155,7 @@ TikTok B-ECO
   <div class="product immunocode" data-name="IMMUNOCODE" data-price="38000">
     <h2>IMMUNOCODE</h2>
     <p>Иммунитетті күшейтіп, ағзаны қорғайды</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1067,7 +1168,7 @@ TikTok B-ECO
   <div class="product eliv8" data-name="ELIV8 DRINK" data-price="38000">
     <h2>ELIV8 DRINK</h2>
     <p>Энергияны арттырып, көңіл-күйді көтереді</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1080,7 +1181,7 @@ TikTok B-ECO
   <div class="product w8magic" data-name="W8 MAGIC" data-price="38000">
     <h2>W8 MAGIC</h2>
     <p>Арықтауға көмектесіп, май жағуды қолдайды</p>
-    <div>1 дана: 38000 ₸</div>
+    <div>1 дана: 38000 ₸  38:Берілетін бонус</div>
     <div class="quantity">
       <button class="minus">−</button>
       <span class="count">1</span>
@@ -1091,6 +1192,223 @@ TikTok B-ECO
 </div>
   
 </section>
+
+<div id="resultsPanel">
+
+<div class="results-header">
+<span onclick="closeResults()">✖</span>
+<h2>Нақты нәтижелер</h2>
+</div>
+
+<div class="results-tabs">
+<button onclick="showVideos()">🎥 Видео</button>
+<button onclick="showPhotos()">🖼 Фото</button>
+</div>
+
+<div id="videos" class="results-content">
+
+<div class="media-card">
+<video controls poster="Screenshot_20260312_043834_Gallery.jpg">
+<source src="oIIj5opE0BVCVQRzecEA2FEBAUDiVuQm4fu9FJ.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260312_043834_Gallery.jpg">
+<source src="oMheQkEDJmfFLsLgzgM8RpoIeMFmUGAfnwE02A.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260312_043834_Gallery.jpg">
+<source src="ow1ReAG1orJFPLGckUcfmgkRAQerEMGIDh51If.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_174903_Gallery.jpg">
+<source src="VN20260319_172733.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_174857_Gallery.jpg">
+<source src="VN20260319_172848.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_174816_Gallery.jpg">
+<source src="VN20260319_172955.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260312_043834_Gallery.jpg">
+<source src="VID-20260312-WA0099.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_173656_Gallery.jpg">
+<source src="VN20260319_172103.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_173650_Gallery.jpg">
+<source src="VN20260319_172140.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_173643_Gallery.jpg">
+<source src="VN20260319_172300.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_175010_Gallery.jpg">
+<source src="VN20260319_171417.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_175028_Gallery.jpg">
+<source src="VN20260319_171504.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260319_175042_Gallery.jpg">
+<source src="VN20260319_171558.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="">
+<source src="" type="">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="">
+<source src="" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+<div class="media-card">
+<video controls poster="Screenshot_20260312_043834_Gallery.jpg">
+<source src="VID_20260319_161824_379.mp4" type="video/mp4">
+</video>
+<p>Бұл өнімді қолданғаннан кейінгі нәтиже.</p>
+</div>
+
+
+</div>
+
+<div id="photos" class="results-content">
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Өнімді қолданғаннан кейінгі фото нәтиже.</p>
+</div>
+
+<div class="media-card">
+<img src="photo_2026-03-02_05-22-13.jpg">
+<p>Клиенттің нәтижесі.</p>
+</div>
+
+
+</div>
+
+</div>
 
 <div id="giftModal">
   <div class="gift-content">
@@ -1140,6 +1458,8 @@ TikTok B-ECO
 
   </div>
 </div>
+
+</section>
   
   © 2026 — <b>Bahrom Furkatov</b>, 
          Негізін қалаушы
@@ -1325,6 +1645,25 @@ window.addEventListener("click", (e) => {
     giftModal.style.display = "none";
   }
 });
+
+function openResults(){
+document.getElementById("resultsPanel").style.display="block"
+showVideos()
+}
+
+function closeResults(){
+document.getElementById("resultsPanel").style.display="none"
+}
+
+function showVideos(){
+document.getElementById("videos").style.display="block"
+document.getElementById("photos").style.display="none"
+}
+
+function showPhotos(){
+document.getElementById("videos").style.display="none"
+document.getElementById("photos").style.display="block"
+}
 
 </script>
 
